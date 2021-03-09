@@ -81,28 +81,11 @@ func GetArticle(id int) (ArticleResult, int) {
 }
 
 //Get article list
-func GetArticleList(title string, pageSize int, pageNum int) ([]Article, int, int64) {
-	var articleList []Article
-	var err error
+func GetArticleList() ([]ArticleResult, int, int64) {
+	var articleList []ArticleResult
 	var total int64
-
-	if title == "" {
-		err = db.Select("article.id, title, img, created_at, `desc`, comment_count, read_count, category.name").Limit(pageSize).Offset((pageNum - 1) * pageSize).Order("Created_At DESC").Joins("Category").Find(&articleList).Error
-		// 单独计数
-		db.Model(&articleList).Count(&total)
-		if err != nil {
-			return nil, 500, 0
-		}
-		return articleList, 200, total
-	}
-	err = db.Select("article.id,title, img, created_at, `desc`, comment_count, read_count, category.name").Limit(pageSize).Offset((pageNum-1)*pageSize).Order("Created_At DESC").Preload("Category").Where("title LIKE ?",
-		title+"%",
-	).Find(&articleList).Error
-	// 单独计数
-	db.Model(&articleList).Where("title LIKE ?",
-		title+"%",
-	).Count(&total)
-
+	total = 150
+	err := db.Raw("select article.*,category.category_name from article,category where article.category_id = category.category_id").Scan(&articleList).Error
 	if err != nil {
 		return nil, 500, 0
 	}
@@ -123,3 +106,7 @@ func GetArticleList(title string, pageSize int, pageNum int) ([]Article, int, in
 // 	}
 // 	return articleByCategory, 200, total
 // }
+
+//Get archive date
+
+//Get article by archive date

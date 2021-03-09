@@ -21,7 +21,7 @@ func InitMysqlDB() {
 		util.DbPort,
 		util.DbName,
 	)
-	fmt.Printf(dns)
+	// fmt.Printf(dns)
 	// dsn := "root:@(localhost)/test?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err = gorm.Open(mysql.Open(dns), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{

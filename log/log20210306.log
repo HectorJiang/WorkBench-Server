@@ -1,0 +1,2 @@
+time="2021-03-06 23:26:04" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36" DataSize=2380 HostName=DESKTOP-50S7VNH Ip="::1" Method=GET Path=/api/v1/article SpendTime="3 ms" status=200
+time="2021-03-06 23:27:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36" DataSize=2380 HostName=DESKTOP-50S7VNH Ip="::1" Method=GET Path=/api/v1/article SpendTime="3 ms" status=200

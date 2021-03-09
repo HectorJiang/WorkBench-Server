@@ -70,14 +70,14 @@ func GetArticleList(c *gin.Context) {
 	// 	pageNum = 1
 	// }
 
-	// data, code, total := model.GetArticleList(title, pageSize, pageNum)
+	data, code, total := model.GetArticleList()
 
-	// c.JSON(http.StatusOK, gin.H{
-	// 	"status":  code,
-	// 	"data":    data,
-	// 	"total":   total,
-	// 	"message": 200,
-	// })
+	c.JSON(http.StatusOK, gin.H{
+		"status":  code,
+		"data":    data,
+		"total":   total,
+		"message": 200,
+	})
 }
 
 //Get article list by category

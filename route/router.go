@@ -3,10 +3,15 @@ package route
 import (
 	"github.com/gin-gonic/gin"
 	v1 "github.com/hectorjiang/workbench/api/v1"
+	"github.com/hectorjiang/workbench/middleware"
+	"github.com/hectorjiang/workbench/util"
 )
 
 func InitRouter() {
+	gin.SetMode(util.AppMode)
 	r := gin.New()
+	r.Use(middleware.Log())
+	r.Use(middleware.Cors())
 	router := r.Group("api/v1")
 	{
 		//Article route
@@ -34,5 +39,6 @@ func InitRouter() {
 		router.GET("admin/category", v1.GetCategoryList)
 
 	}
-	_ = r.Run(":8000")
+
+	_ = r.Run(util.HttpPort)
 }
